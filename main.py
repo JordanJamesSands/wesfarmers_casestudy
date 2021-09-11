@@ -30,13 +30,12 @@ def load_csv(filename):
             print('error')
             return 1
     #create pandas csv
-    csv = pd.read_csv(io.StringIO(table_data),header=None,dtype=str)
+    csv = pd.read_csv(io.StringIO(table_data),header=None,dtype=str,date_parser=date_parse,parse_dates=[1])
     csv.columns = csv_header
     csv.replace(' ',np.nan,inplace=True)
     csv = csv.astype(
         dtype = {
             'Station Name':str,
-            'Date':str,
             'Evapo-Transpiration':float,
             'Rain':float,
             'PanEvaporation':float,
@@ -50,6 +49,25 @@ def load_csv(filename):
     )
     return csv
     
+def date_parse(val):
+    return datetime.datetime.strptime(val,'%d/%m/%Y')
+
+def report_output(weather_table,temp_threshold):
+    #create tmp for compute
+    tmp = weather_table.copy()
+    tmp['Year'] = out.Date.apply(lambda x: x.year)
+    output = tmp[tmp['MaximumTemperature'] > temp_threshold].groupby(['Station Name','Year']).agg('count')[['index']]
+    output.columns = ['count']
+    return print(output.to_csv())
+
+
+def generate_report(temp_threshold,state,location):
+    weather_table = load_data(state=state,location=location,start_str='200901',end_str='202109')
+    return report_output(weather_table=weather_table,temp_threshold=temp_threshold)
+
+    
+generate_report(35,'nsw','albury_airport')
+
 #TODO VALIDATOR?
 #TODO schema
 #TODO move csv_header from out of fn
