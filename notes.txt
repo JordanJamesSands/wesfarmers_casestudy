@@ -1,0 +1,21 @@
+io, re
+
+# find nearest location
+#input: address or latlon
+
+# load data
+#input: daterange in months
+
+# find max temps over a threshold
+# input: threshold
+
+# readme
+
+### deployment ###
+1. #simple in VM
+
+2. # GCP GAE
+## front end in angular
+## backend with flask
+
+3. #Only flask GAE
