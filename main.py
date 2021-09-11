@@ -65,6 +65,15 @@ def generate_report(temp_threshold,state,location):
     weather_table = load_data(state=state,location=location,start_str='200901',end_str='202109')
     return report_output(weather_table=weather_table,temp_threshold=temp_threshold)
 
+
+#latlons
+#-------
+#bunnings notting hill: -37.9003340275206, 145.12698915589579
+# officeworks geelong: -38.14841478301936, 144.36390415590225
+# Kmart Belmont: -31.96532953131573, 115.93558156924325
+
+
+
     
 generate_report(35,'nsw','albury_airport')
 
