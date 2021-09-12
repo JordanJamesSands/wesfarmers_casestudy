@@ -124,7 +124,8 @@ def generate_summary_report():
         f.write(report_csv)
     return pandas_report.reset_index()
 
-
+if __name__ == '__main__':
+    generate_summary_report()
 
 
 
