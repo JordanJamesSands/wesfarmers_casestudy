@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <style>
+            #report {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            #report td, #report th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            }
+
+            #report tr:nth-child(even){background-color: #f2f2f2;}
+
+            #report tr:hover {background-color: #ddd;}
+
+            #report th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+            }
+            .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            }
+      </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Wesfarmers Extreme Weather Tool</title>
+
+    
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/unicons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.theme.default.min.css') }}">
+                                
+
+
+    
+
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" href="css/tooplate-style.css">
+    
+<!--
+
+Tooplate 2115 Marvel
+
+https://www.tooplate.com/view/2115-marvel
+
+-->
+  </head>
+
+  <body>
+
+    <div >
+        <h2 style="text-align: center;" class="mb-4">Wesfarmers Extreme Weather Tool</h2>
+            <div  class = "center">
+              <a style="text-align: center;" href="/report" class="form-control submit-btn center" value="Calculate">Calculate</a>
+            </div>
+    </div>
+
+    {% if display_report %}
+    <table id="report">
+        <tr>
+            <th>Station Name</th>
+            <th>year</th>
+            <th>No. Days over 35°C</th>
+        </tr>
+        {% for row in report.values %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    
+
+    <!-- FOOTER -->
+     <footer class="footer py-5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-12 col-12">                                
+                        <p style="font-size:x-small" class="copyright-text text-center">Free CSS template designed by <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Headroom.js"></script>
+    <script src="js/jQuery.headroom.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/custom.js"></script>
+
+  </body>
+</html>

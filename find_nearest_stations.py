@@ -17,10 +17,19 @@ def find_nearest_station(latlon):
         dist_km = dist.km
         if min_dist > dist_km:
             min_dist = dist_km
+            min_state = row[1]['state']
             closest_station = row[1]['Station Name']
-    print('Closest station is {} at {} Km'.format(closest_station,min_dist))
+    print('Closest station is {}, {} at {} Km'.format(closest_station,min_state,min_dist))
     return closest_station
 
+print('Searching for nearest station to Bunnings:')
 find_nearest_station(bunnings_latlon)
+print()
+
+print('Searching for nearest station to Officeworks:')
 find_nearest_station(officeworks_latlon)
+print()
+
+print('Searching for nearest station to Kmart:')
 find_nearest_station(kmart_latlon)
+print()
